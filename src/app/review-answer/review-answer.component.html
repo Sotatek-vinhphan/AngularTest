@@ -1,0 +1,33 @@
+<div class="container-form" xmlns="http://www.w3.org/1999/html">
+  <div class="form-builder-container">
+    <div class="init-questions">
+      <div *ngFor="let q of listASubject?.formArray; let i = index">
+        <ng-container *ngIf="q.type === TYPE_QUESTION.TEXTBOX">
+          <div>
+            <label><strong>{{q.label}}</strong></label>
+          </div>
+          <div>
+            <p>{{q.value}}</p>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="q.type === TYPE_QUESTION.CHECKBOX">
+          <div>
+            <label><strong>{{q.label}}</strong></label>
+          </div>
+          <div>
+            <p *ngFor="let value of q.answers">{{value}}</p>
+          </div>
+          <div>
+
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="add">
+      <button class="btn btn-success" (click)="back()">
+        Back to form builder
+      </button>
+    </div>
+
+  </div>
+</div>

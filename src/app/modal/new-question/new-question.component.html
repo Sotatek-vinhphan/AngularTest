@@ -1,0 +1,48 @@
+<div class="new-question-container">
+  <h5 class="pt-2">Add a New Questions</h5>
+  <div class="mt-4 add-question-form">
+    <form [formGroup]="answerForm" (submit)="summit()">
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Please input your questions!"
+          formControlName="questions"
+          class="form-control w-50"
+        />
+
+      </div>
+      <div class="mb-3">
+        <select class="form-control w-50" formControlName="typeQuestions">
+          <option value="paragraph">Paragraph</option>
+          <option value="checkbox-list">Checkbox List</option>
+        </select>
+      </div>
+
+      <div class="checkbox-container" *ngIf="answerForm.get('typeQuestions')?.value === 'checkbox-list'"
+           formArrayName="answers">
+        <ng-container *ngFor="let answer of answersFormGroup.controls;  let i = index;">
+          <div [formGroupName]="i" class="row mb-2">
+            <div class="form-group col-6">
+              <input class="form-control" formControlName="name" type="text" placeholder="Type question here">
+            </div>
+          </div>
+        </ng-container>
+
+        <button type="button" class="btn-another-answer" (click)="addAnswer()">+ Add another answer</button>
+
+      </div>
+      <div class="checkbox d-flex">
+        <input formControlName="other" id="other" class="mr-2" type="checkbox">
+        <label for="other" class="ml-2">Allow User to specify their own answer</label>
+      </div>
+      <div class="checkbox d-flex">
+        <input id="required" formControlName="required" class="mr-2" type="checkbox">
+        <label for="required" class="ml-2">This field is required</label>
+      </div>
+      <button class="btn btn-success m-1" type="submit"> Submit</button>
+    </form>
+
+  </div>
+
+
+</div>

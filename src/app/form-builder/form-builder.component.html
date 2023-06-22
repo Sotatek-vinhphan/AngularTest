@@ -1,0 +1,48 @@
+<div class="container-form">
+  <div class="form-builder-container" [formGroup]="formGroup">
+    <div class="init-questions" formArrayName="formArray">
+      <div *ngFor="let formQ of answersFormGroup.controls; let i = index">
+        <form [formGroupName]="i">
+          <div class="form-group col-6" style="margin-top: 10px"
+               *ngIf="getFormGroup(i).controls['type'].value === TYPE_QUESTION.TEXTBOX">
+            <label><strong>{{getFormGroup(i).controls['label'].value}}</strong><span
+              *ngIf="getFormGroup(i).controls['required'].value">*</span></label>
+            <input class="form-control" formControlName="value" type="text" placeholder="Type answer here">
+          </div>
+
+          <div class="form-group col-6" style="margin-top: 10px" [ngClass]="{'mt-5': i !== 0}"
+               *ngIf="getFormGroup(i).controls['type'].value === TYPE_QUESTION.CHECKBOX">
+            <label><strong>{{getFormGroup(i).controls['label'].value}}</strong><span
+              *ngIf="getFormGroup(i).controls['required'].value">*</span></label>
+            <div>
+              <ng-container *ngFor="let option of getFormGroup(i).controls['answers'].value">
+                <div>
+                  <div class="form-check form-check-inline">
+                    <input (click)="option.value = !option.value; log(option.value)" class="form-check-input"
+                           type="checkbox" name="{{option.name}}" id="inlineRadio1{{option.name}}"
+                           value="{{option.value}}">
+                    <label (click)="option.value = !option.value" class="form-check-label"
+                           for="inlineRadio1{{option.name}}">{{option.name}}</label>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="review">
+      <button class="btn btn-primary" (click)="review()">
+        Review my answers
+      </button>
+    </div>
+    <div class="add">
+      <button class="btn btn-success" (click)="openModalNewQuestion()">
+        Add New Question
+      </button>
+    </div>
+
+  </div>
+</div>
+

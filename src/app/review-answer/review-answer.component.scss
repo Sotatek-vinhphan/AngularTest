@@ -1,0 +1,39 @@
+.container-form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.form-builder-container {
+  position: relative;
+  border: 1px solid black;
+  min-height: 500px;
+  padding: 15px;
+  display: flex;
+  width: 500px;
+  justify-content: center;
+
+  .btn-add {
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    margin: 12px 0;
+  }
+}
+
+.review {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.add {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.init-questions {
+  width: 100%;
+}

@@ -1,0 +1,20 @@
+.new-question-container {
+  padding: 20px;
+
+  .checkbox-container {
+    .btn-another-answer {
+      color: blue;
+      background: transparent;
+      border: none;
+    }
+    .checkbox {
+      input {
+        background: blue;
+      }
+      span {
+        color: blue;
+      }
+    }
+
+  }
+}
